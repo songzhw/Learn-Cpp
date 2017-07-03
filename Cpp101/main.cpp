@@ -1,6 +1,10 @@
 #include <iostream>
+using namespace std;
+
+typedef int meter;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    meter distance = 5;
+    cout << "Hello, World! " << distance << std::endl; //=> Hello, World! 5
     return 0;
 }
