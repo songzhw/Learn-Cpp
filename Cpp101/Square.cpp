@@ -12,9 +12,3 @@ int Square::getArea() {
 Square::~Square() {
     std::cout << " --> destory class "<<std::endl;
 }
-
-Square Square::operator+(const Square &) {
-    return Square(0); //等同java中的 new Square(0);
-}
-
-ColorSquare::ColorSquare(int len) : Square(len) {}

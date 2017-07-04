@@ -5,16 +5,9 @@ class Square {
 public:
     Square(int len);
     ~Square(); //析构函数.相当于Android中的onDestory()
-    int getArea();
-    Square operator+(const Square&);
+    virtual int getArea();
 private:
     int width;
-};
-
-class ColorSquare : public Square{
-public:
-    ColorSquare(int len);
-
 };
 
 #endif
