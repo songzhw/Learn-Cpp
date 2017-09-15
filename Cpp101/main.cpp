@@ -24,7 +24,7 @@ class Triangle: public Shape{
 
 int main() {
     Shape* shape;
-    Triangle triangle();
+    Triangle triangle;
     triangle.area(); // child area();
 
     shape = &triangle;
