@@ -1,14 +1,41 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include <algorithm>
 #include "Square.h"
 
 using namespace std;
 
+void show(const int& num){
+    cout << num << " , ";
+}
+class Shape{
+    public:
+        int area(){
+            cout<<"parent area()"<<endl;
+        }
+};
 
+class Triangle: public Shape{
+    public:
+        int area(){
+            cout<<"child area()"<<endl;
+        }
+};
 
 int main() {
+    Shape* shape;
+    Triangle triangle();
+    triangle.area(); // child area();
+
+    shape = &triangle;
+    shape->area(); // parent area()
+}
+
+int no_virtual(){
+
+}
+
+int collection(){
     Square square(20);
     cout << "area = " << square.getArea() << std::endl;  //=> 400; --> Destory class
 
@@ -26,6 +53,7 @@ int main() {
     cout << endl; //=> 100 111
 
     for_each(list.begin(), list.end(), show);
+    cout << endl;
 
     // ===========================
     map<int, string> student;
