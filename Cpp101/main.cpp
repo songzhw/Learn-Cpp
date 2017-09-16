@@ -10,7 +10,7 @@ void show(const int& num){
 }
 class Shape{
     public:
-        int area(){
+        virtual int area(){
             cout<<"parent area()"<<endl;
         }
 };
@@ -28,7 +28,7 @@ int main() {
     triangle.area(); // child area();
 
     shape = &triangle;
-    shape->area(); // parent area()
+    shape->area(); // child area()
 }
 
 int no_virtual(){
