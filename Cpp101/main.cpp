@@ -5,37 +5,65 @@
 
 using namespace std;
 
-void show(const int& num){
+void show(const int &num) {
     cout << num << " , ";
 }
-class Shape{
-    public:
-        virtual int area(){
-            cout<<"parent area()"<<endl;
-        }
+
+class Shape {
+public:
+    virtual void area() {
+        cout << "parent area()" << endl;
+    }
 };
 
-class Triangle: public Shape{
-    public:
-        int area(){
-            cout<<"child area()"<<endl;
-        }
+class Triangle : public Shape {
+public:
+    void area() {
+        cout << "child area()" << endl;
+    }
 };
+
+class A {
+public:
+    virtual int area() = 0; //要加这个"=0", 不然会说没有函数体, compile error
+};
+
+class B : public A {
+public:
+    int area() {
+        return 22;
+    }
+};
+
+class C : public A {
+public:
+    int area() {
+        return 33;
+    }
+};
+
 
 int main() {
-    Shape* shape;
+}
+
+void test_abstract(){
+    B b;
+    C c;
+    cout<<"B : "<<b.area()<<endl; //=> 22
+    cout<<"C : "<<c.area()<<endl; //=> 33
+}
+
+void test_virtual() {
+    Shape *shape;
     Triangle triangle;
     triangle.area(); // child area();
 
     shape = &triangle;
     shape->area(); // child area()
-}
+};
 
-int no_virtual(){
 
-}
-
-int collection(){
+int collection() {
     Square square(20);
     cout << "area = " << square.getArea() << std::endl;  //=> 400; --> Destory class
 
@@ -62,11 +90,12 @@ int collection(){
     student[1002] = "lucy";
 
     map<int, string>::iterator ite2 = student.find(1000);
-    cout << "map find value from key " << ite2->first << " ; " << ite2->second << endl;//=> 1000; szw
+    cout << "map find value from key " << ite2->first << " ; " << ite2->second
+         << endl;//=> 1000; szw
 
     map<int, string>::iterator ite3 = student.begin();
-    while(ite3 != student.end()){
-        cout<< "key = "<<ite3->first<<" ; value = "<<ite3->second<<endl;
+    while (ite3 != student.end()) {
+        cout << "key = " << ite3->first << " ; value = " << ite3->second << endl;
         ite3++;
     }
 
