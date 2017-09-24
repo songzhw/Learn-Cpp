@@ -26,6 +26,7 @@ public:
 class A {
 public:
     virtual int area() = 0; //要加这个"=0", 不然会说没有函数体, compile error
+    virtual void show() = 0;
 };
 
 class B : public A {
@@ -33,6 +34,7 @@ public:
     int area() {
         return 22;
     }
+    void show(){}
 };
 
 class C : public A {
@@ -40,6 +42,7 @@ public:
     int area() {
         return 33;
     }
+    void show(){}
 };
 
 
