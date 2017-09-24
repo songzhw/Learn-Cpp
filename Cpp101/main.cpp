@@ -4,6 +4,26 @@
 
 using namespace std;
 
+int main(){
+    ifstream file;
+    file.open("news.txt", ios::in);
+
+    int n = 0;
+    string tmp;
+
+    if(file.fail()){
+        return 0;
+    } else {
+        while(getline(file, tmp, '\n')){
+            n++;
+            cout<<"line = "<<tmp<<endl;
+        }
+        file.close();
+        cout<<"file line count = "<<n<<endl;
+        return 1;
+    }
+}
+
 // 这样就没有读出"\n"换行符来
 void readFileByChar(){
     char c;
