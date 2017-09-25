@@ -6,6 +6,10 @@ using namespace std;
 
 
 
+// ======================
+
+
+// ======================
 namespace first{
     void func(){ cout<<"func1"<<endl; }
 }
@@ -14,12 +18,20 @@ namespace second{
     void func(){ cout<<"func2"<<endl; }
 }
 
+using namespace first;
 int main(){
-    first::func();
-    second::func();
+    func();  //=> func1
+    second::func(); //=> func2
+}
+
+int namespaceDemo(){
+    first::func();  //=> func1
+    second::func(); //=> func2
     return 0;
 }
 
+
+// ======================
 int newAndDelete() {
     double* p = NULL;
     p = new double; // new 不仅分配了内存, 还创建了对象. malloc()只分配内存
@@ -32,6 +44,8 @@ int newAndDelete() {
 
 }
 
+
+// ======================
 int readLine(){
     ifstream file;
     file.open("news.txt", ios::in);
@@ -97,3 +111,4 @@ void write(){
 
     ofs.close(); // 生成在"%Cpp101%/cmake-build-debug目录下"
 }
+// ======================
