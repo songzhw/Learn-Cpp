@@ -4,7 +4,19 @@
 
 using namespace std;
 
-int main(){
+int newAndDelete() {
+    double* p = NULL;
+    p = new double; // new 不仅分配了内存, 还创建了对象. malloc()只分配内存
+
+    *p = 23.15;
+    cout<<"value1 = "<<*p<<endl;
+
+    delete p;
+    cout<<"value2 = "<<*p<<endl; //为何仍是23.15?
+
+}
+
+int readLine(){
     ifstream file;
     file.open("news.txt", ios::in);
 
