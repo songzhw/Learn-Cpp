@@ -18,8 +18,20 @@ namespace second{
     void func(){ cout<<"func2"<<endl; }
 }
 
+namespace third{
+    void func();
+    namespace fourth{
+        void func();
+    }
+}
+
+int wrappedNamespace(){
+    third::func();
+    third::fourth::func();
+}
+
 using namespace first;
-int main(){
+int usingNamespaceDemo(){
     func();  //=> func1
     second::func(); //=> func2
 }
