@@ -4,6 +4,22 @@
 
 using namespace std;
 
+
+
+namespace first{
+    void func(){ cout<<"func1"<<endl; }
+}
+
+namespace second{
+    void func(){ cout<<"func2"<<endl; }
+}
+
+int main(){
+    first::func();
+    second::func();
+    return 0;
+}
+
 int newAndDelete() {
     double* p = NULL;
     p = new double; // new 不仅分配了内存, 还创建了对象. malloc()只分配内存
