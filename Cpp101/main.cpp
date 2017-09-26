@@ -8,6 +8,17 @@ using namespace std;
 
 // ======================
 
+// ctime
+
+int main(){
+    time_t now = time(0);
+    char* timeString = ctime(&now);
+    cout<<"local time = "<<timeString<<endl;
+
+
+
+}
+
 
 // ======================
 namespace first{
@@ -16,18 +27,6 @@ namespace first{
 
 namespace second{
     void func(){ cout<<"func2"<<endl; }
-}
-
-namespace third{
-    void func();
-    namespace fourth{
-        void func();
-    }
-}
-
-int wrappedNamespace(){
-    third::func();
-    third::fourth::func();
 }
 
 using namespace first;
