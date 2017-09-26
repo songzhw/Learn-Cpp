@@ -10,12 +10,14 @@ using namespace std;
 
 // ctime
 
-int main(){
+int timeDate(){
     time_t now = time(0);
     char* timeString = ctime(&now);
-    cout<<"local time = "<<timeString<<endl;
+    cout<<"local time = "<<timeString<<endl;  //=>  Mon Sep 25 20:33:39 2017
 
-
+    tm *gmTime = gmtime(&now);
+    timeString = asctime(gmTime);
+    cout<<"UTC time = "<<timeString<<endl;    //=>  UTC time = Tue Sep 26 00:35:01 2017
 
 }
 
