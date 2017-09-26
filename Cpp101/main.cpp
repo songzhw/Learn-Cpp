@@ -19,6 +19,11 @@ int timeDate(){
     timeString = asctime(gmTime);
     cout<<"UTC time = "<<timeString<<endl;    //=>  UTC time = Tue Sep 26 00:35:01 2017
 
+    // tm是一个结构体, 处理c++中的date与time, 类似java中的Calendar, Date类
+    tm *localTime = localtime(&now);
+    cout<<1990+ localTime->tm_year<<"-"<<1+localTime->tm_mon<<"-"<<localTime->tm_mday<<endl;
+    cout<<localTime->tm_hour<<":"<<localTime->tm_min<<":"<<localTime->tm_sec<<endl;
+    //=> 2017-9-25  ;  20:39:24
 }
 
 
