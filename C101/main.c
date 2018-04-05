@@ -1,8 +1,5 @@
 #include <stdio.h>
 
-
-
-
 int pointer101() {
     int b = 55;
     printf("%d, %d\n", b, *&b); //=> 55, 55
@@ -21,7 +18,7 @@ int pointer101() {
     return 0;
 }
 
-int main(){ // c中声明数据不是用 double[] aryF;
+int pPlusPlus(){ // c中声明数据不是用 double[] aryF;
     double aryD[3] = {1.1, 2.5, 4.0};
     double* pD = aryD;
     printf("size of a pointer is %d\n", sizeof(pD)); // size of a pointer is 8
@@ -53,4 +50,21 @@ size of a doble is 4
 (03) 0x7ffeed98ef44 || 1
 (04) 0x7ffeed98ef48 || 3
  */
+    return 0;
+}
+
+int main(){
+    int v = 55;
+    const int c = 88;
+
+    int* pv = &c;
+    const int* pc = &c;
+
+    pc = &v;
+    pv = &v;
+    printf("ret01 %d", *pc); //=> 55
+    printf("ret02 %d", *pv); //=> 55
+
+
+    return 0;
 }
