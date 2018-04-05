@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int pointer101() {
     int b = 55;
@@ -53,7 +54,7 @@ size of a doble is 4
     return 0;
 }
 
-int main(){
+int pointerConst(){
     int v = 55;
     const int c = 88;
 
@@ -64,6 +65,28 @@ int main(){
     pv = &v;
     printf("ret01 %d", *pc); //=> 55
     printf("ret02 %d", *pv); //=> 55
+
+    int* const p3 = &v;
+//    p3 = &c;
+
+    return 0;
+}
+
+char* copy(char* src, char* dest){
+    if(src == NULL || dest == NULL){
+        return dest;
+    }
+    return NULL;
+}
+
+int allocateMemory(){
+    int* p = (int*) malloc(sizeof(int));
+    if(p == NULL){
+        printf("memory alloc error \n");
+        exit(1);
+    }
+    // ....
+    free(p);
 
 
     return 0;
