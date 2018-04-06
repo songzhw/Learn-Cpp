@@ -91,3 +91,35 @@ int allocateMemory(){
 
     return 0;
 }
+
+int allocateInput(){
+    int i = 0;
+    int* p = (int*) malloc(2 * sizeof(int));
+
+    for(i = 0; i < 2; i++, p++){
+        scanf("%d", p); //scanf时, 竟然是使用p. 这点很意外.
+    }
+
+    p = p - 2; //回到首地址
+    for(i = 0; i < 2; i++, p++){
+        printf("%d \n", *p);
+    }
+
+    free(p);
+
+    return 0;
+}
+
+int main(){
+    char c1[] = "ab";
+    char c2[] = {'a','b'};
+    char* c3 = "abcd";
+    printf("%d, %d\n", sizeof(c1), sizeof(c2)); //=> 3, 2
+    printf("%d, %d\n", sizeof(c3), sizeof(*c3)); //=>8, 1
+    printf("%c, %s\n", *c3, c3); //=> a, abcd
+
+    printf("%s, %s, %s\n", c1, c2, c3); //=> ab, abab, abcd
+    printf("%p, %p, %p\n", c1, c2, c3); //=> 0x7ffeebffef69, 0x7ffeebffef67, 0x103c01f91
+
+    return 0;
+}
