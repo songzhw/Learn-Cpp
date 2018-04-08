@@ -110,7 +110,13 @@ int allocateInput(){
     return 0;
 }
 
-int main(){
+void scanfDemo(){
+    int a;
+    scanf("%d", &a);
+    printf("num2 = %d\n", a);
+}
+
+void charArySize(){
     char c1[] = "ab";
     char c2[] = {'a','b'};
     char* c3 = "abcd";
@@ -121,5 +127,47 @@ int main(){
     printf("%s, %s, %s\n", c1, c2, c3); //=> ab, abab, abcd
     printf("%p, %p, %p\n", c1, c2, c3); //=> 0x7ffeebffef69, 0x7ffeebffef67, 0x103c01f91
 
-    return 0;
+}
+
+void error_scanfString(){
+    // 只能输入a, 没有printf打印
+    char* c4 = NULL;
+    scanf("%s", c4);
+    printf("color %s and %s\n", "red", c4);
+}
+
+void correct_scanfString(){
+    char c4[20];
+    scanf("%s", c4);
+    printf("color %s and %s\n", "red", c4);
+}
+
+void copyStr(){
+    char dest[30];
+    char* src = "you are the best!";
+    int i = 0;
+    dest[i] = *src;
+    while (src[i] != '\0'){
+        i++;
+        src++;
+        dest[i] = *src;
+    }
+    printf("result = %s\n", dest);
+}
+
+void getStringLength(){
+    char *tmp, *src;
+    src = (char*) malloc (128);
+    scanf("%s", src);
+    tmp = src;
+    while (*tmp != '\0') {
+        tmp++;
+    }
+    printf("size = %d \n", (tmp - src));
+}
+
+void stringLiberal(){
+    char* s1 = "abc";
+    char* s2 = "abc";
+    printf("%p\n%p\n", s1, s2); //0x10a206fa4, 0x10a206fa4
 }
