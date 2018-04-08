@@ -206,3 +206,17 @@ void copyString_error() {
     printf("% s\n", p);
     free(p);
 }
+
+void twoDimenArray(){
+    int b[2][3];
+    int a[][3] = {{1, 2, 3}, {12, 13, 14}};
+
+    int* p1 = a; //不推荐这样用
+    printf("%d, %d \n", *p1, *(p1+3)); //=> 1, 12
+
+    int* p2 = a[0];
+    printf("%d, %d \n", *p2, *(p2+3)); //=> 1, 12
+
+    int* p3 = &a[0][0];
+    printf("%d, %d \n", *p3, *(p3+3)); //=> 1, 12
+}
