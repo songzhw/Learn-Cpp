@@ -2,12 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-void main() {
-    int a[3][3];
-    a[0][0] = 128;
-    printf("%p %p \n", a, &a[0][0]); //=> 0x7ffee85b5f40 0x7ffee85b5f40
-    printf("%p %p \n", &a[0], a[0]); //=> 0x7ffee85b5f40 0x7ffee85b5f40
-    printf("%d \n", *a[0]);          //=> 128
+void swap( int, int); // 函数原型的声明
 
-    char strs[2][12] = {"Turbo C", "Visual C"};
+void main() {
+    int a = 55, b = 66;
+    swap(a, b);
+    printf(" In main: a =% d, b =% d\n", a, b);
+}
+
+void swap(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+    printf(" In swap: a =% d, b =% d\n", a, b);
 }
