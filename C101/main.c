@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int pointer101() {
     int b = 55;
@@ -185,10 +186,23 @@ void errorWhenPointerIsOutOfBoundary() {
     printf("\n");
 }
 
-void formatOf_S_C(){
+void formatOf_S_C() {
     int a[] = {1, 2, 3};
     char c[] = "abc";
-    int* p1 = &a[1];
-    char* p2 = &c[1];
+    int *p1 = &a[1];
+    char *p2 = &c[1];
     printf("%d, %c, %s \n", *p1, *p2, p2); //=> 2, b, bc
+}
+
+void copyString_error() {
+    int i = 0;
+    char t[] = "abcde";
+    char *p;
+    if ((p = (char *) malloc(strlen(t) + 1)) == NULL) {
+        printf("内存分配错误!\n");
+        exit(1);
+    }
+    while ((p[i] = t[i]) != '\0') i++;
+    printf("% s\n", p);
+    free(p);
 }
