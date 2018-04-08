@@ -6,12 +6,15 @@ int pointer101() {
     printf("%d, %d\n", b, *&b); //=> 55, 55
     printf("%p, 0x%p\n", &b, &b); //=> 0x7ffee13abf68, 0x0x7ffee13abf68
 
-    int* p1 = &b;
-    float f = 23.1;  float* p2 = &f;
-    char c = 'g';    char* p3 = &c;
+    int *p1 = &b;
+    float f = 23.1;
+    float *p2 = &f;
+    char c = 'g';
+    char *p3 = &c;
     printf("%d %d %d\n\n", sizeof(p1), sizeof(p2), sizeof(p3)); //=>8, 8, 8
 
-    int a = 55; int* p = &a;
+    int a = 55;
+    int *p = &a;
     printf("%p %p %d \n", p, &a, *p); //=> 0x7ffee4446f3c 0x7ffee4446f3c 55
     a = 66;
     printf("%p %p %d \n", p, &a, *p); //=> 0x7ffee4446f3c 0x7ffee4446f3c 66
@@ -19,9 +22,9 @@ int pointer101() {
     return 0;
 }
 
-int pPlusPlus(){ // c中声明数据不是用 double[] aryF;
+int pPlusPlus() { // c中声明数据不是用 double[] aryF;
     double aryD[3] = {1.1, 2.5, 4.0};
-    double* pD = aryD;
+    double *pD = aryD;
     printf("size of a pointer is %d\n", sizeof(pD)); // size of a pointer is 8
     printf("size of a doble is %d\n", sizeof(double)); // size of a doble is 8
 
@@ -31,7 +34,7 @@ int pPlusPlus(){ // c中声明数据不是用 double[] aryF;
 
 
     int aryI[3] = {1, 3, 7};
-    int* pI = aryI;
+    int *pI = aryI;
 
     printf("size of a pointer is %d\n", sizeof(pI)); // size of a pointer is 8
     printf("size of a int is %d\n", sizeof(int)); // size of a int is 4
@@ -54,34 +57,34 @@ size of a doble is 4
     return 0;
 }
 
-int pointerConst(){
+int pointerConst() {
     int v = 55;
     const int c = 88;
 
-    int* pv = &c;
-    const int* pc = &c;
+    int *pv = &c;
+    const int *pc = &c;
 
     pc = &v;
     pv = &v;
     printf("ret01 %d", *pc); //=> 55
     printf("ret02 %d", *pv); //=> 55
 
-    int* const p3 = &v;
+    int *const p3 = &v;
 //    p3 = &c;
 
     return 0;
 }
 
-char* copy(char* src, char* dest){
-    if(src == NULL || dest == NULL){
+char *copy(char *src, char *dest) {
+    if (src == NULL || dest == NULL) {
         return dest;
     }
     return NULL;
 }
 
-int allocateMemory(){
-    int* p = (int*) malloc(sizeof(int));
-    if(p == NULL){
+int allocateMemory() {
+    int *p = (int *) malloc(sizeof(int));
+    if (p == NULL) {
         printf("memory alloc error \n");
         exit(1);
     }
@@ -92,16 +95,16 @@ int allocateMemory(){
     return 0;
 }
 
-int allocateInput(){
+int allocateInput() {
     int i = 0;
-    int* p = (int*) malloc(2 * sizeof(int));
+    int *p = (int *) malloc(2 * sizeof(int));
 
-    for(i = 0; i < 2; i++, p++){
+    for (i = 0; i < 2; i++, p++) {
         scanf("%d", p); //scanf时, 竟然是使用p. 这点很意外.
     }
 
     p = p - 2; //回到首地址
-    for(i = 0; i < 2; i++, p++){
+    for (i = 0; i < 2; i++, p++) {
         printf("%d \n", *p);
     }
 
@@ -110,16 +113,16 @@ int allocateInput(){
     return 0;
 }
 
-void scanfDemo(){
+void scanfDemo() {
     int a;
     scanf("%d", &a);
     printf("num2 = %d\n", a);
 }
 
-void charArySize(){
+void charArySize() {
     char c1[] = "ab";
-    char c2[] = {'a','b'};
-    char* c3 = "abcd";
+    char c2[] = {'a', 'b'};
+    char *c3 = "abcd";
     printf("%d, %d\n", sizeof(c1), sizeof(c2)); //=> 3, 2
     printf("%d, %d\n", sizeof(c3), sizeof(*c3)); //=>8, 1
     printf("%c, %s\n", *c3, c3); //=> a, abcd
@@ -129,25 +132,25 @@ void charArySize(){
 
 }
 
-void error_scanfString(){
+void error_scanfString() {
     // 只能输入a, 没有printf打印
-    char* c4 = NULL;
+    char *c4 = NULL;
     scanf("%s", c4);
     printf("color %s and %s\n", "red", c4);
 }
 
-void correct_scanfString(){
+void correct_scanfString() {
     char c4[20];
     scanf("%s", c4);
     printf("color %s and %s\n", "red", c4);
 }
 
-void copyStr(){
+void copyStr() {
     char dest[30];
-    char* src = "you are the best!";
+    char *src = "you are the best!";
     int i = 0;
     dest[i] = *src;
-    while (src[i] != '\0'){
+    while (src[i] != '\0') {
         i++;
         src++;
         dest[i] = *src;
@@ -155,9 +158,9 @@ void copyStr(){
     printf("result = %s\n", dest);
 }
 
-void getStringLength(){
+void getStringLength() {
     char *tmp, *src;
-    src = (char*) malloc (128);
+    src = (char *) malloc(128);
     scanf("%s", src);
     tmp = src;
     while (*tmp != '\0') {
@@ -166,8 +169,26 @@ void getStringLength(){
     printf("size = %d \n", (tmp - src));
 }
 
-void stringLiberal(){
-    char* s1 = "abc";
-    char* s2 = "abc";
+void stringLiberal() {
+    char *s1 = "abc";
+    char *s2 = "abc";
     printf("%p\n%p\n", s1, s2); //0x10a206fa4, 0x10a206fa4
+}
+
+void errorWhenPointerIsOutOfBoundary() {
+    int a[] = {1, 2, 3, 4, 5}, *p, i;
+    p = a;
+    for (i = 4; i > -1; --i) printf("% d ", p[i]);
+    printf("\n");
+    p = &a[4];
+    for (i = 4; i > -1; --i) printf("% d ", p[i]);
+    printf("\n");
+}
+
+void formatOf_S_C(){
+    int a[] = {1, 2, 3};
+    char c[] = "abc";
+    int* p1 = &a[1];
+    char* p2 = &c[1];
+    printf("%d, %c, %s \n", *p1, *p2, p2); //=> 2, b, bc
 }
