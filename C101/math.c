@@ -1,5 +1,5 @@
 #include "math.h"
 
-double percent(int arg) {
+double percent(const int arg) {
     return arg / NUM;
 }
