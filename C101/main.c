@@ -15,13 +15,13 @@ int main() {
 #include <time.h>
 
 int main() {
-    clock_t startCpuTime = clock();
-    // do something
-    clock_t endCpuTime = clock();
+    time_t time1 = time(NULL);
+    printf("%d\n", time1); //=> 1523909831
 
-    long timeSpent = (endCpuTime - startCpuTime) / CLOCKS_PER_SEC;
-    printf("%ld\n", timeSpent);
-
+    time_t* p = malloc(sizeof(time_t));
+    time_t time2 = time(p);
+    printf("%d, %d, %p\n", time2, *p, p); //=> 1523909945, 1523909945, 0x7f93825006e0
+    free(p);
 
     return 0;
 }
