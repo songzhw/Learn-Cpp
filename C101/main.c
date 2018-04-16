@@ -15,9 +15,12 @@ int main() {
 #include <time.h>
 
 int main() {
-    srand((unsigned int) time(NULL));
-    printf("%d, %d, %d\n", rand(), rand(), rand());
-    printf("%d, %d, %d\n", rand()%4, rand()%4, rand()%4);
+    clock_t startCpuTime = clock();
+    // do something
+    clock_t endCpuTime = clock();
+
+    long timeSpent = (endCpuTime - startCpuTime) / CLOCKS_PER_SEC;
+    printf("%ld\n", timeSpent);
 
 
     return 0;
