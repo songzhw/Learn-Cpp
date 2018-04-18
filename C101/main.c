@@ -10,28 +10,55 @@ int main() {
 }*/
 
 
+#include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
+#include <stdarg.h>
+#include <string.h>
+#include <assert.h>
+
+int vargsDemo(int count, int b, ...){
+    va_list  vargs;
+    va_start(vargs, b);
+
+    int i = 0;
+    for(i = 0; i < count; i++) {
+        va_arg(vargs, double); //这就只能转成double了
+    }
+
+    va_end(vargs);
+}
+
+void onPause(){
+    printf("onPause()\n");
+}
+void onDestroy(){
+    printf("onDestroy()\n");
+}
 
 int main() {
+    vargsDemo(3, 0, 23.0, 23.3, 23.4);
 
+    int a = 20;
+    assert( a == 20); // assert( a == 20)
 
+    char cmd[200] = "ls -l";
+    system(cmd);
 
-    time_t timep;
-    time (&timep);
-    printf("%s \n", asctime(gmtime(&timep)));    //=> Mon Apr 16 20:29:26 2018
-    printf("%s \n", asctime(localtime(&timep))); //=> Mon Apr 16 16:29:26 2018
-    printf("%s \n", ctime(&timep));              //=> Mon Apr 16 16:29:26 2018
+    printf("PATH : %s\n", getenv("PATH"));
+    printf("HOME : %s\n", getenv("HOME"));
+    printf("ROOT : %s\n", getenv("ROOT"));
 
-    time_t time1 = time(NULL);
-    printf("%d\n", time1); //=> 1523909831
+    printf("exiting ...\n");
+    atexit(onPause);
+    atexit(onDestroy);
 
-    time_t* p = malloc(sizeof(time_t));
-    time_t time2 = time(p);
-    printf("%d, %d, %p\n", time2, *p, p); //=> 1523909945, 1523909945, 0x7f93825006e0
-//    printf("%s \n", asctime(p));
-    free(p);
+    FILE* fp = fopen( "nofile.txt","r" );
+    if(fp == NULL) {
+        exit(0);
+    }
+    printf("end ...");
+
 
     return 0;
 }
