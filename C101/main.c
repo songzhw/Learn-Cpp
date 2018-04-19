@@ -7,59 +7,74 @@ int main() {
     printf("[math.h] int tmp11 = 10; || main() tmp11 = %d \n", tmp11);
 
     return 0;
-}*/
+}
+ */
 
 
-#include <time.h>
-#include <stdlib.h>
+#include <locale.h>
 #include <stdio.h>
-#include <stdarg.h>
-#include <string.h>
-#include <assert.h>
-
-int vargsDemo(int count, int b, ...){
-    va_list  vargs;
-    va_start(vargs, b);
-
-    int i = 0;
-    for(i = 0; i < count; i++) {
-        va_arg(vargs, double); //这就只能转成double了
-    }
-
-    va_end(vargs);
-}
-
-void onPause(){
-    printf("onPause()\n");
-}
-void onDestroy(){
-    printf("onDestroy()\n");
-}
+#include <time.h>
 
 int main() {
-    vargsDemo(3, 0, 23.0, 23.3, 23.4);
+    time_t currtime;
+    struct tm *timer;
+    char buffer[80];
 
-    int a = 20;
-    assert( a == 20); // assert( a == 20)
+    time(&currtime);
+    timer = localtime(&currtime);
 
-    char cmd[200] = "ls -l";
-    system(cmd);
+    printf("Locale is: %s\n", setlocale(LC_ALL, "en_GB")); //=> Locale is: en_GB
+    strftime(buffer, 80, "%c", timer);
+    printf("Date is: %s\n", buffer); //=> Date is: Wed 18 Apr 22:26:46 2018
 
-    printf("PATH : %s\n", getenv("PATH"));
-    printf("HOME : %s\n", getenv("HOME"));
-    printf("ROOT : %s\n", getenv("ROOT"));
+    printf("Locale is: %s\n", setlocale(LC_ALL, "zh_CN")); //=>
+    strftime(buffer, 80, "%c", timer);
+    printf("Date is: %s\n", buffer); //=> Date is: 三  4/18 22:26:46 2018
 
-    printf("exiting ...\n");
-    atexit(onPause);
-    atexit(onDestroy);
 
-    FILE* fp = fopen( "nofile.txt","r" );
-    if(fp == NULL) {
-        exit(0);
-    }
-    printf("end ...");
+
+    // ============ 2. Money ============
+
+    struct lconv *lc;
+
+    //=> (local) ￥ ;(internation) CNY
+    setlocale(LC_MONETARY, "zh_GB");
+    lc = localeconv();
+    printf("Local Currency Symbol: %s\n", lc->currency_symbol);
+    printf("International Currency Symbol: %s\n", lc->int_curr_symbol);
+
+    //=>  $ ; USD
+    setlocale(LC_MONETARY, "en_US");
+    lc = localeconv();
+    printf("Local Currency Symbol: %s\n", lc->currency_symbol);
+    printf("International Currency Symbol: %s\n", lc->int_curr_symbol);
+
+    //=> £ ; GBP
+    setlocale(LC_MONETARY, "en_GB");
+    lc = localeconv();
+    printf("Local Currency Symbol: %s\n", lc->currency_symbol);
+    printf("International Currency Symbol: %s\n", lc->int_curr_symbol);
+
+    //=> Eu ; EUR  (备注: 即欧元)
+    setlocale(LC_MONETARY, "it_IT");
+    lc = localeconv();
+    printf("Local Currency Symbol: %s\n", lc->currency_symbol);
+    printf("International Currency Symbol: %s\n", lc->int_curr_symbol);
+
+    printf("Decimal Point = %s\n", lc->decimal_point); //=> Decimal Point = .
+
+
+    // ============ 3. Number ============
+
+    setlocale(LC_NUMERIC, "zh_GB");
+    lc = localeconv();
+    printf("num %s - %s\n", lc->mon_thousands_sep, lc->thousands_sep);
+
+
 
 
     return 0;
+
 }
+
 
