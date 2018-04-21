@@ -38,4 +38,5 @@ gen/
 .idea/
 gradle/
 gradlew/
+cmake-build-debug/
 
