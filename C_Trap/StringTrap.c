@@ -1,7 +1,5 @@
 
 #include "StringTrap.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void appendString(char* s1, char* s2) {
 //    char result[100];
