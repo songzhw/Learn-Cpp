@@ -40,3 +40,9 @@ gradle/
 gradlew/
 cmake-build-debug/
 
+# NDK
+.google/
+.externalNativeBuild/
+.gradle/
+
+
