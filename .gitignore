@@ -45,4 +45,7 @@ cmake-build-debug/
 .externalNativeBuild/
 .gradle/
 
+#python
+venv/
+
 
