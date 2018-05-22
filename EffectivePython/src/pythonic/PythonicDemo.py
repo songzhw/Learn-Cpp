@@ -1,9 +1,14 @@
-
+from pythonic.utils import const
 
 if __name__ == '__main__':
 
     # const
+    # const.ab = "t"
+    const.COM = "Ali"
+    # const.COM = "NetEase"
 
+
+'''
     # swap values + 格式化输出
     a = 20
     b = 33
@@ -28,3 +33,6 @@ if __name__ == '__main__':
     with open('PythonicDemo.py', 'r') as file:
         content = file.read()
         print("szw file: ", content)  # => 打印出本文件的所有内容
+
+
+'''
