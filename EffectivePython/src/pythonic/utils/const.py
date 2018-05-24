@@ -10,3 +10,7 @@ class _const:
 
 import sys
 sys.modules[__name__] = _const()
+
+from pythonic.utils import const
+const.NAME = "szw"
+const.ERROR_CODE = 40
