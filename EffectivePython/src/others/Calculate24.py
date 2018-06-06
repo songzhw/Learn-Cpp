@@ -2,12 +2,16 @@
 from others.Node import Node
 
 
-
 def calculate24(array):
     treelist = buildAllTrees(array)
     for tree in treelist:
-        print()
+        if tree.result == 24:
+            expression = getExpression(tree)
+            print("{} - {}").format(tree, expression)
 
+def getExpression(tree):
+    expression = "{} {} {}".format(tree.left.result, tree.operator, tree.right.result)
+    return expression
 
 def buildAllTrees(array):
     length = len(array)
